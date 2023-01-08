@@ -2,15 +2,16 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 body {
-     height: 100vh;
-     background-image: url("images/bg.jpg");
-     background-repeat: no-repeat;
-     background-size: cover;
-     font-family: 'Roboto', sans-serif;
-     color: #fff;
+    height: 100vh;
+    background-image: url("images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
 }   
 
 .sidebar {
@@ -21,13 +22,82 @@ body {
     background: rgba(10, 10, 10, .65);
     box-shadow: 0 8px 32px rgba(2, 4, 24);
     border-right: 2px solid rgba(255, 255, 255, .1);
+    transition: .3s ease-in-out;
+}
+
+.sidebar.open {
+    width: 360px;
+}
+
+.sidebar .logo {
+    padding: 32px 0;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-size: 1rem;
+    font-variant: small-caps;
+    pointer-events: none;
+}
+
+.nav-title {
+    color: #dadada;
+    margin: 40px 0 20px;
+    pointer-events: none;
+    scale: 0;
+    opacity: 0;
+}
+
+.sidebar.open .nav-title {
+    scale: 1;
+    opacity: 1;
+    transition: .2s;
+}
+
+.sidebar nav {
+    padding: 0 30px;
+}
+
+.nav-item {
+    padding: 1em;
+    margin: 8px 0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, .1);
+}
+
+.nav-item i {
+    font-size: 26px;
+}
+
+.nav-item span {
+    font-size: 16px;
+    margin-left: 8px;
+    cursor: pointer;
+    scale: 0;
+    opacity: 0;
+}
+
+.sidebar.open .nav-item span {
+    scale: 1;
+    opacity: 1;
+    pointer-events: visible;
+    transition: .4s;
+}
+
+.nav-item.active {
+    background-color: #ff328e;
 }
 
 .sidebar .toggle {
     cursor: pointer;
     position: absolute;
     color: #fff;
-    top: 180px;
+    top: 2.5em;
     right: -20px;
     font-size: 38px;
     line-height: 50%;
@@ -39,4 +109,12 @@ body {
         transparent 50%,
         rgba(10, 10, 10, .65) 50%
     );
+}
+
+.sidebar.open .toggle i {
+    transition: .3s linear;
+}
+
+.sidebar.open .toggle i {
+    transform: rotate(180deg);
 }
